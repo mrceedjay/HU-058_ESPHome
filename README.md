@@ -25,6 +25,35 @@ The NTC thermistor calibration can be adjusted in the `calibration` section of `
 
 I had problem with OTA so i recommend using USB. The problem was that the old code was still running after update. 
 
+I made a test automation in Home Assistant to automatically adjust the display brightness. It works quite well.
+
+### Automatic Display Brightness
+
+The display brightness can be automatically adjusted based on the built-in light sensor using a Home Assistant automation.
+
+```yaml
+alias: WiFi Clock - Automatic Display Brightness
+description: ""
+mode: restart
+
+triggers:
+  - trigger: state
+    entity_id: sensor.wifi_clock_light
+
+conditions:
+  - condition: template
+    value_template: >
+      {{ states('sensor.wifi_clock_light') not in ['unknown', 'unavailable'] }}
+
+actions:
+  - action: light.turn_on
+    target:
+      entity_id: light.wifi_clock_display
+    data:
+      brightness_pct: >
+        {% set light_level = states('sensor.wifi_clock_light') | float %}
+        {{ [1, [light_level, 100] | min] | max | round(0) }}
+```
 
 
 
