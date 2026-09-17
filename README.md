@@ -1,4 +1,4 @@
-# Open firmware for the HU-058D WiFi clock
+# Open firmware for the HU-058D WiFi clock with added buzzer,ntc and light
 
 The AliExpress kit sold as an "ESP8266 IoT Colorful WiFi Clock Kit" ships closed firmware which is lame and terrible. (And really hard to use.) I have reverse engineered the way to drive the display so you can use your own microcontroller. 
 
@@ -56,8 +56,10 @@ The buttons are connected to the ESP32-WROOM-32 in the ESPHome firmware, and are
 | GPIO18 | 2 | DATA_1, driver 2 |
 | GPIO32 | 9 | S1, top button |
 | GPIO33 | 10 | S2, bottom button |
+| GPIO34 | 3 | RT, NTC temperature sensor |
+| GPIO35 | 4 | RP, LDR light sensor |
+| GPIO25 | 11 | RB, buzzer |
 | GND | 8 | GND |
-
 The drivers run from the 5V rail but work perfectly with the 3.3V drive signals from the ESP32.
 
 Step-by-step build notes are in `docs/wiring.md`.
