@@ -11,12 +11,13 @@ The new connections are:
 | GPIO25 | 11 | RB, buzzer |
 
 
-The NTC thermistor calibration can be adjusted in the calibration section of clock.yaml:
+The NTC thermistor calibration can be adjusted in the `calibration` section of `clock.yaml`:
 
-calibration:
-  b_constant: 3950
-  reference_temperature: 25°C
-  reference_resistance: 10kOhm
+| Setting | Default | Description |
+| --- | --- | --- |
+| `b_constant` | `3950` | Beta (B) value of the NTC thermistor |
+| `reference_temperature` | `25°C` | Reference temperature |
+| `reference_resistance` | `10kOhm` | Thermistor resistance at the reference temperature |
 
 ![ESP32 cut](docs/images/esp32%20cut.png)
 
