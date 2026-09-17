@@ -9,14 +9,14 @@ esphome:
   on_boot:
     priority: -100
     then:
-      # Startup beep: 2000 Hz, 10% volume = 5% PWM, 20 ms.
+      # Startup beep: 2000 Hz, 10% PWM, 20 ms.
       - output.turn_on: buzzer_output
       - output.ledc.set_frequency:
           id: buzzer_output
           frequency: 2000 Hz
       - output.set_level:
           id: buzzer_output
-          level: 5%
+          level: 10%
       - delay: 20ms
       - output.turn_off: buzzer_output
 
@@ -35,6 +35,9 @@ esp32:
   board: esp32dev
   framework:
     type: arduino
+    advanced:
+      minimum_chip_revision: "3.1"
+
 external_components:
   - source:
       type: local
@@ -216,6 +219,10 @@ sensor:
   #  NTC
   #   |
   #  GND
+  #
+  # ESPHome reports the native temperature in Celsius.
+  # Home Assistant automatically converts it to the user's
+  # preferred temperature unit (°C or °F).
 
   - platform: adc
     pin: GPIO34
@@ -232,8 +239,11 @@ sensor:
 
   - platform: ntc
     sensor: ntc_resistance
-    id: temperature
-    name: Temperature
+    id: ntc_temp
+    name: "NTC Temp"
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
     calibration:
       b_constant: 3950
       reference_temperature: 25°C
@@ -294,9 +304,6 @@ binary_sensor:
       - delayed_on: 20ms
       - delayed_off: 20ms
 
-# Alarm sound runs independently from the template switch.
-# Buzzer Volume 0-100% maps to LEDC PWM 0-50%.
-# script.stop immediately aborts the loop when Alarm is switched OFF.
 script:
   - id: alarm_sound
     mode: restart
@@ -377,19 +384,6 @@ switch:
     turn_off_action:
       - script.stop: alarm_sound
       - output.turn_off: buzzer_output
-
-# BUZZER
-#
-# GPIO25 -> 10k -> PNP base
-# PNP emitter -> 3.3V
-# PNP collector -> buzzer -> GND
-#
-# PNP is active LOW, therefore the ESPHome output is inverted.
-#
-# Buzzer Volume:
-#   0%   = 0% PWM
-#   50%  = 25% PWM
-#   100% = 50% PWM
 
 output:
   - platform: ledc
@@ -499,6 +493,7 @@ select:
     set_action:
       - lambda: |-
           std::string u = x;
+
           if (u == "None")
             u.clear();
 
