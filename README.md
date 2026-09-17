@@ -31,7 +31,7 @@ I made a test automation in Home Assistant to automatically adjust the display b
 
 ```yaml
 alias: WiFi Clock - Automatic Display Brightness
-description: ""
+description: "Automatically adjusts the display brightness based on the ambient light sensor."
 mode: restart
 
 triggers:
@@ -50,7 +50,8 @@ actions:
     data:
       brightness_pct: >
         {% set light_level = states('sensor.wifi_clock_light') | float %}
-        {{ [1, [light_level, 100] | min] | max | round(0) }}
+        {% set brightness = (light_level - 4) * 39 / 96 + 1 %}
+        {{ [1, [brightness, 40] | min] | max | round(0) }}
 ```
 
 
