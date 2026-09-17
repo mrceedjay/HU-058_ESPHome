@@ -23,7 +23,7 @@ The NTC thermistor calibration can be adjusted in the `calibration` section of `
 
 ![ESP32 3.3V](docs/images/esp32%203_3V.png)
 
-
+I had problem with OTA so i recommend using USB. The problem was that the old code was still running after update. 
 
 
 The AliExpress kit sold as an "ESP8266 IoT Colorful WiFi Clock Kit" ships closed firmware which is lame and terrible. (And really hard to use.) I have reverse engineered the way to drive the display so you can use your own microcontroller. 
