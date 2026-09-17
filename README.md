@@ -1,4 +1,5 @@
 # Open firmware for the HU-058D WiFi clock with added buzzer,ntc and light
+I have added support for buzzer,temp and light sensor. The 5V need to be cut and 3.3V connected instead. Only clock.yaml have changed. Added alarm, beep, temperature och light(0-100%)
 
 The AliExpress kit sold as an "ESP8266 IoT Colorful WiFi Clock Kit" ships closed firmware which is lame and terrible. (And really hard to use.) I have reverse engineered the way to drive the display so you can use your own microcontroller. 
 
