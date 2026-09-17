@@ -23,7 +23,7 @@ The NTC thermistor calibration can be adjusted in the `calibration` section of `
 
 ![ESP32 3.3V](docs/images/esp32%203_3V.png)
 
-I had problem with OTA so i recommend using USB. The problem was that the old code was still running after update. 
+I had problem with OTA so i recommend using USB. The problem was that the old code was still running after firmware upload. 
 
 I made a test automation in Home Assistant to automatically adjust the display brightness. It works quite well.
 
