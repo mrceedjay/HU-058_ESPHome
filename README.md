@@ -1,4 +1,4 @@
-# Open firmware for the HU-058D WiFi clock with added buzzer,ntc and light
+# Open firmware for the HU-058D WiFi clock with added buzzer,ntc and light sensor
 
 I have added support for buzzer,temp and light sensor. The 5V need to be cut and 3.3V connected instead. Only clock.yaml have changed. Added alarm, beep, temperature and light(0-100%). 
 
