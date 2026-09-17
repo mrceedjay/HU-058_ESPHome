@@ -1,6 +1,13 @@
 # Open firmware for the HU-058D WiFi clock with added buzzer,ntc and light
 
 I have added support for buzzer,temp and light sensor. The 5V need to be cut and 3.3V connected instead. Only clock.yaml have changed. Added alarm, beep, temperature och light(0-100%)
+The new connections are
+| ESP32 | Socket pin | Net |
+| --- | --- | --- |
+| GPIO34 | 3 | RT, NTC temperature sensor |
+| GPIO35 | 4 | RP, LDR light sensor |
+| GPIO25 | 11 | RB, buzzer |
+
 
 ![ESP32 cut](docs/images/esp32%20cut.png)
 
