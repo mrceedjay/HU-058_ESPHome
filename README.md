@@ -29,8 +29,6 @@ I made a test automation in Home Assistant to automatically adjust the display b
 
 ### Automatic Display Brightness
 
-The display brightness can be automatically adjusted based on the built-in light sensor using a Home Assistant automation.
-
 ```yaml
 alias: WiFi Clock - Automatic Display Brightness
 description: ""
