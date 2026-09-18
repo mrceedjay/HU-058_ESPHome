@@ -25,7 +25,7 @@ The NTC thermistor calibration can be adjusted in the `calibration` section of `
 
 I had problem with OTA so i recommend using USB. The problem was that the old code was still running after firmware upload. 
 
-I made a test automation in Home Assistant to automatically adjust the display brightness. It works quite well.
+I made a test automation in Home Assistant to automatically adjust the display brightness. It works but its just for demo.  
 
 ### Automatic Display Brightness
 
