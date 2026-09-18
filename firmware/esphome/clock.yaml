@@ -206,18 +206,7 @@ light:
     gamma_correct: 1.0
 
 sensor:
-  # NTC
-  #
-  # 3.3V
-  #   |
-  #  10k
-  #   |
-  # GPIO34
-  #   |
-  #  NTC
-  #   |
-  #  GND
-  #
+
   # ESPHome reports the native temperature in Celsius.
   # Home Assistant automatically converts it to the user's
   # preferred temperature unit (°C or °F).
